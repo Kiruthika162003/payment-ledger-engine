@@ -17,7 +17,9 @@ from mint.assays import (  # noqa: F401
     fx,
     lifecycle,
     reconciliation,
+    roundtrip,
     statements,
+    tamper,
 )
 from mint.assays.framework import Assay, Finding, assay, broken, catalog
 
