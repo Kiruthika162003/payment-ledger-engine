@@ -23,6 +23,7 @@ measurement.
 
 from __future__ import annotations
 
+import datetime
 from collections import defaultdict
 from dataclasses import dataclass, field
 
@@ -72,6 +73,32 @@ class Ledger:
     def balance(self, code: str) -> Money:
         account = self.chart.get(code)
         return Money.from_minor(self.balance_units(code), account.currency)
+
+    def raw_debits_asof(self, code: str, date: datetime.date) -> int:
+        return sum(
+            p.debit_units()
+            for e in self.entries
+            if e.date <= date
+            for p in e.postings_for(code)
+        )
+
+    def raw_credits_asof(self, code: str, date: datetime.date) -> int:
+        return sum(
+            p.credit_units()
+            for e in self.entries
+            if e.date <= date
+            for p in e.postings_for(code)
+        )
+
+    def balance_units_asof(self, code: str, date: datetime.date) -> int:
+        account = self.chart.get(code)
+        return account.signed_units(
+            self.raw_debits_asof(code, date), self.raw_credits_asof(code, date)
+        )
+
+    def balance_asof(self, code: str, date: datetime.date) -> Money:
+        account = self.chart.get(code)
+        return Money.from_minor(self.balance_units_asof(code, date), account.currency)
 
     def postings_for(self, code: str) -> list[tuple[Entry, Posting]]:
         self.chart.get(code)
