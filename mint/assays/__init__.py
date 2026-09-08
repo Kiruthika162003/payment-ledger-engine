@@ -11,7 +11,13 @@ that hides which claims are actually being checked.
 
 from __future__ import annotations
 
-from mint.assays import balance, conservation, fx, reconciliation  # noqa: F401
+from mint.assays import (  # noqa: F401
+    balance,
+    conservation,
+    fx,
+    reconciliation,
+    statements,
+)
 from mint.assays.framework import Assay, Finding, assay, broken, catalog
 
 __all__ = ["Assay", "Finding", "assay", "broken", "catalog"]
