@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from examples import coffee_day, month_end
+from examples import coffee_day, marketplace_day, month_end
 
 COFFEE_DAY = [
     "Coffee shop, day one",
@@ -46,6 +46,26 @@ class TestCoffeeDay:
         assert out == COFFEE_DAY
 
 
+MARKETPLACE_DAY = [
+    "Marketplace, one day",
+    "Buyer paid: 100.00 USD",
+    "  baker nets 54.00 USD after 6.00 USD commission",
+    "  florist nets 34.00 USD after 6.00 USD commission",
+    "Platform commission: 12.00 USD",
+    "Split reconciles: True",
+    "Reserve withheld: 10.00 USD",
+    "Paid out today: 90.00 USD",
+    "Reserve releases on: 2026-11-30",
+    "Refunded 30.00 USD to a buyer; commission clawed back 3.00 USD",
+    "Retried capture posted once: True",
+    "Payout to bank: 67.10 USD",
+    "Net revenue: 70.00 USD",
+    "Books balanced: True",
+    "Reserve released later: 10.00 USD",
+    "Reserve balance after: 0.00 USD",
+]
+
+
 class TestMonthEnd:
     def test_the_transcript_is_pinned(self):
         assert month_end.run() == MONTH_END
@@ -54,3 +74,13 @@ class TestMonthEnd:
         month_end.main()
         out = capsys.readouterr().out.splitlines()
         assert out == MONTH_END
+
+
+class TestMarketplaceDay:
+    def test_the_transcript_is_pinned(self):
+        assert marketplace_day.run() == MARKETPLACE_DAY
+
+    def test_main_prints_every_line(self, capsys):
+        marketplace_day.main()
+        out = capsys.readouterr().out.splitlines()
+        assert out == MARKETPLACE_DAY
