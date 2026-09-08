@@ -1,0 +1,28 @@
+[project]
+name = "mint"
+version = "0.1.0"
+description = "A double-entry payment ledger engine where every posting balances"
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["mint", "mint.assays"]
+
+[tool.ruff]
+line-length = 96
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "RET", "SIM", "ARG", "PL", "RUF"]
+ignore = ["N818", "PLR2004", "PLR0913", "PLR0912", "PLR0911", "SIM108"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["PLR0915", "ARG002"]
+"mint/cli.py" = ["PLC0415"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
