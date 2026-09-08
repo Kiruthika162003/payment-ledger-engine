@@ -15,6 +15,7 @@ from mint.assays import (  # noqa: F401
     balance,
     conservation,
     fx,
+    lifecycle,
     reconciliation,
     statements,
 )
