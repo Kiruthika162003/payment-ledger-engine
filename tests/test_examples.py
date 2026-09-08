@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from examples import coffee_day
+from examples import coffee_day, month_end
 
 COFFEE_DAY = [
     "Coffee shop, day one",
@@ -18,6 +18,24 @@ COFFEE_DAY = [
 ]
 
 
+MONTH_END = [
+    "Month end, March 2026",
+    "Billed on account: 9000.00 USD",
+    "Collected in advance, deferred: 1200.00 USD",
+    "Recognized this month: 100.00 USD",
+    "Still deferred: 1100.00 USD",
+    "Accrued expense: 2450.75 USD",
+    "Revenue for March: 9100.00 USD",
+    "Expenses for March: 2450.75 USD",
+    "Net income: 6649.25 USD",
+    "Trial balance columns equal: True",
+    "Balance sheet balances: True",
+    "Closed; retained earnings: 6649.25 USD",
+    "Revenue after close: 0.00 USD",
+    "Books balanced: True",
+]
+
+
 class TestCoffeeDay:
     def test_the_transcript_is_pinned(self):
         assert coffee_day.run() == COFFEE_DAY
@@ -26,3 +44,13 @@ class TestCoffeeDay:
         coffee_day.main()
         out = capsys.readouterr().out.splitlines()
         assert out == COFFEE_DAY
+
+
+class TestMonthEnd:
+    def test_the_transcript_is_pinned(self):
+        assert month_end.run() == MONTH_END
+
+    def test_main_prints_every_line(self, capsys):
+        month_end.main()
+        out = capsys.readouterr().out.splitlines()
+        assert out == MONTH_END

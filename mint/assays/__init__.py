@@ -13,11 +13,13 @@ from __future__ import annotations
 
 from mint.assays import (  # noqa: F401
     balance,
+    closing,
     conservation,
     fx,
     lifecycle,
     reconciliation,
     roundtrip,
+    schedules,
     statements,
     tamper,
 )
