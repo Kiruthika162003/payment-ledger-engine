@@ -12,13 +12,16 @@ that hides which claims are actually being checked.
 from __future__ import annotations
 
 from mint.assays import (  # noqa: F401
+    allocation,
     balance,
     closing,
     conservation,
     controls,
+    custody,
     fx,
     lifecycle,
     netting,
+    pricing,
     reconciliation,
     roundtrip,
     schedules,
