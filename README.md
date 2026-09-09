@@ -145,5 +145,3 @@ now takes exactly the remainder.
 - 20 assays, none broken
 - 6 worked examples with pinned transcripts
 - 57 commits, none of them red
-
-Written by Kiruthika Subramani in collaboration with Claude, Anthropic's AI assistant.
